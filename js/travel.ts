@@ -1,43 +1,46 @@
-class Location {
+class Locations {
 	constructor(
 		public name: string,
 		public city: string,
-		public zip: number,
+		public zip: string,
 		public adress: string,
 		public img: string,
+		public vdate : Date = new Date(), 
 	){}
 
 	render(){
-		return `<div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3">
+		return `<div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 d-block d-md-flex">
 					<div class="card text-center">
 						<img class="card-img-top d-none d-sm-block" src="img/${this.img}" alt="${this.name}">
 						<div class="card-body">
 							<h5 class="card-title">${this.name}</h5>
-						<p class="card-text">${this.adress}, ${this.zip}&nbsp;${this.city}&nbsp;<a href="https://www.google.com/maps/place/${this.zip} ${this.city}, ${this.adress}"><i class="fas fa-map-marker-alt"></i></a></p>
-						</div>
+						<p class="card-text">${this.adress}, <span class="text-nowrap">${this.zip} ${this.city} <a href="https://www.google.com/maps/place/${this.zip} ${this.city}, ${this.adress}" title="show location on google maps"><i class="fas fa-map-marker-alt"></i></a></span></p>
+					</div>
+					<div class="card-footer text-muted">
+						<small>Created: ${days[this.vdate.getDay()]}, ${String(this.vdate.getDate()).padStart(2, '0')}.${String(this.vdate.getMonth()+1).padStart(2, '0')}.${this.vdate.getFullYear()} - ${this.vdate.getHours()}:${String(this.vdate.getMinutes()).padStart(2, '0')}</small>
 					</div>
 				</div>`
 	} 
 }
 
-class Restaurants extends Location {
+class Restaurants extends Locations {
 	public tel: string;
 	public type: string;
 	public web: string;
-	constructor(name: string, city: string, zip: number, adress: string, img: string, tel: string, type: string, web: string){
+	constructor(name: string, city: string, zip: string, adress: string, img: string, tel: string, type: string, web: string){
 		super(name, city, zip, adress, img);
 		this.tel = tel;
 		this.type = type;
 		this.web = web;
 	}
 	render (){
-		return `<div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3">
+		return `<div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 d-block d-md-flex">
 					<div class="card text-center">
   						<img class="card-img-top d-none d-sm-block" src="img/${this.img}" alt="${this.name}">
   						<div class="card-body">
     						<h5 class="card-title">${this.name}</h5>
     						<p class="lead">${this.type}</p>
-    						<p class="card-text">${this.adress}, ${this.zip}&nbsp;${this.city}&nbsp;<a href="https://www.google.com/maps/place/${this.zip} ${this.city}, ${this.adress}"><i class="fas fa-map-marker-alt"></i></a></p>
+    						<p class="card-text">${this.adress}, <span class="text-nowrap">${this.zip} ${this.city} <a href="https://www.google.com/maps/place/${this.zip} ${this.city}, ${this.adress}" title="show location on google maps"><i class="fas fa-map-marker-alt"></i></a></span></p>
     						<a href="${this.web}"><i class="fas fa-globe"></i> ${this.web.slice(7,)}</a>
     						<p><i class="fas fa-phone"></i> ${this.tel}
     					</div>
@@ -46,12 +49,12 @@ class Restaurants extends Location {
 	}
 }
 
-class Events extends Location {
+class Events extends Locations {
 	public web: string;
 	public date: Date;
 	public time: Date;
 	public price: number;
-	constructor(name: string, city: string, zip: number, adress: string, img: string, web: string, date: Date, time: Date, price: number){
+	constructor(name: string, city: string, zip: string, adress: string, img: string, web: string, date: Date, time: Date, price: number){
 		super(name, city, zip, adress, img)
 		this.web = web;
 		this.date = date;
@@ -59,15 +62,15 @@ class Events extends Location {
 		this.price = price;
 	}
 	render() {
-		return `<div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3">
+		return `<div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 d-block d-md-flex">
 					<div class="card text-center">
   						<img class="card-img-top d-none d-sm-block" src="img/${this.img}" alt="${this.name}">
   						<div class="card-body">
     						<h5 class="card-title">${this.name}</h5>
-    						<p class="card-text">${this.adress}, ${this.zip}&nbsp;${this.city}&nbsp;<a href="https://www.google.com/maps/place/${this.zip} ${this.city}, ${this.adress}"><i class="fas fa-map-marker-alt"></i></a></p>
+    						<p class="card-text">${this.adress}, <span class="text-nowrap">${this.zip} ${this.city} <a href="https://www.google.com/maps/place/${this.zip} ${this.city}, ${this.adress}" title="show location on google maps"><i class="fas fa-map-marker-alt"></i></a></span></p>
     						<a href="${this.web}"><i class="fas fa-globe"></i> ${this.web.slice(7,)}</a>
     						<p><i class="far fa-calendar-alt"></i> ${days[this.date.getDay()]}, ${String(this.date.getDate()).padStart(2, '0')}.${String(this.date.getMonth()+1).padStart(2, '0')}.${this.date.getFullYear()} - ${this.time.getHours()}:${String(this.time.getMinutes()).padStart(2, '0')}<br>
-    						<i class="far fa-money-bill-alt"></i> &euro; ${(this.price).toFixed(2)}</p>
+							<i class="far fa-money-bill-alt"></i> &euro; ${(this.price).toFixed(2)}</p>
     					</div>
 					</div>
 				</div>`
@@ -78,13 +81,19 @@ var travel:Array<any>=[];
 var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 var days = ["Sun.","Mon.","Tues.","Wed.","Thurs.","Fr.","Sat."];
 
+travel.push(new Locations ("Marineland", "Antibes", "06600", "306 Avenue Mozart","marineland.jpg", new Date(2015,7,15,16)));
+travel.push(new Locations ("Familypark", "St. Margarethen", "7062", "Märchenparkweg 1","familypark.jpg", new Date(2014,8,20,10,30)));
+travel.push(new Locations ("Gardaland", "Castelnuovo del Garda", "37014", "Via Derna 4","gardaland.jpg", new Date(2015,7,8,8,15)));
+travel.push(new Locations ("Pyramidenkogel", "Linden", "9074", "Linden 62","pyramidenkogel.jpg", new Date(2016,6,27,14)));
+travel.push(new Locations ("Schneeberg", "Puchberg", "2734", "Bahnhofpl. 1","schneeberg.jpg", new Date(2018,4,20,11)));
+travel.push(new Locations ("Aqualandia", "Lido di Jesolo", "30016", "Via Michelangelo Buonarroti 15","aqualandia.jpg", new Date(2013,6,22,9)));
+travel.push(new Locations ("Zoo Vienna", "Vienna", "1130", "Maxingstraße 13b","zooVienna.jpg", new Date(2013,3,6,10,45)));
+travel.push(new Locations ("Amethyst Welt", "Maissau", "3712", "Horner Straße 36","amethystwelt.jpg", new Date(2015,9,10,13)));
 
-travel.push(new Location ("St. Charles Church", "Vienna", 1010, "Karlsplatz 1","stCharlesChurch.jpg"));
-travel.push(new Location ("Zoo Vienna", "Vienna", 1130, "Maxingstraße 13b","zooVienna.jpg"));
-travel.push(new Restaurants ("Lemon Leaf Thai Restaurant", "Vienna", 1050, "Kettenbrückengasse 19", "LemonLeaf.png", "+43(1)5812308", "thai food","http://www.lemonleaf.at"));
-travel.push(new Restaurants ("SIXTA", "Vienna", 1050, "Schönbrunner Straße 21", "SIXTA.png", "+43 1 58 528 56 l +43 1 58 528 56", "traditional fine food","http://www.sixta-restaurant.at"));
-travel.push(new Events("Kris Kristofferson", "Vienna", 1150, "Wiener Stadthalle, Halle F, Roland Rainer Platz 1", "KrisKristofferson.jpg", "http://kriskristofferson.com", new Date(2018,10,15), new Date(0,0,0,20,0),58.50));
-travel.push(new Events("Lenny Kravitz", "Vienna", 1150, "Wiener Stadthalle - Halle D, Roland Rainer Platz 1", "LennyKravitz.jpg", "http://www.lennykravitz.com", new Date(2019,11,09), new Date(0,0,0,19,30),47.80));
+travel.push(new Restaurants ("Lemon Leaf Thai Restaurant", "Vienna", "1050", "Kettenbrückengasse 19", "LemonLeaf.png", "+43(1)5812308", "thai food","http://www.lemonleaf.at"));
+travel.push(new Restaurants ("SIXTA", "Vienna", "1050", "Schönbrunner Straße 21", "SIXTA.png", "+43 1 58 528 56 l +43 1 58 528 56", "traditional fine food","http://www.sixta-restaurant.at"));
+travel.push(new Events("Kris Kristofferson", "Vienna", "1150", "Wiener Stadthalle, Halle F, Roland Rainer Platz 1", "KrisKristofferson.jpg", "http://kriskristofferson.com", new Date(2018,10,15), new Date(0,0,0,20,0),58.50));
+travel.push(new Events("Lenny Kravitz", "Vienna", "1150", "Wiener Stadthalle - Halle D, Roland Rainer Platz 1", "LennyKravitz.jpg", "http://www.lennykravitz.com", new Date(2019,11,09), new Date(0,0,0,19,30),47.80));
 
 
 
@@ -95,14 +104,21 @@ for (let i in travel) {
 
 
 //-----add Eventhandler to hide menu on click-----//
-$(".nav-link").click(function(){$(".collapse").collapse("hide");})
-var bgImageArray: Array<string> = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"]
-function changeBG(id) {
-	var i:number = Math.floor(Math.random()*bgImg.length);
-	console.log(i);
-	document.getElementById(id).style.background = "url(img/"+bgImg[i]+") no-repeat center center";
-	document.getElementById(id).style.backgroundSize ="cover";
-	setTimeout(function(){changeBG(id)}, 5000);
+$(".nav-link").click(function(){$(".collapse").collapse("hide");});
+
+function fadeImage() {
+	var x = 10; //number of images
+	for (var i = 1; i <= x; ++i) {
+		new Image().src = "img/bg"+i+".jpg";
+	}
+    // caches images, avoiding white flash between background replacements
+	var i = Math.ceil(Math.random()*x);
+	document.getElementById("header").style.background = "url(img/bg"+i+".jpg) no-repeat center center";
+	document.getElementById("header").style.backgroundSize ="cover";
+	setTimeout(function(){fadeImage()}, 5000);
 }
 
-console.log(travel)
+fadeImage()
+
+
+

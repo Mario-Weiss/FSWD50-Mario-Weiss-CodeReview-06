@@ -24,9 +24,9 @@
     			<span class="navbar-toggler-icon"></span>
   			</button>
 			<div class="nav nav-tabs collapse navbar-collapse text-center justify-content-center" id="nav-tab" role="tablist">
-				<a class="nav-item nav-link active px-5" id="location-tab" data-toggle1="collapse" data-toggle="tab" href="#location" role="tab" aria-controls="location" aria-selected="true"><h1 class="d-none d-sm-block"><i class="fas fa-map-marked-alt"></i></h1><p>Locations</p></a>
-				<a class="nav-item nav-link px-5" id="restaurants-tab" data-toggle="tab" href="#restaurants" role="tab" aria-controls="restaurants" aria-selected="false"><h1 class="d-none d-sm-block"><i class="fas fa-utensils d-none d-sm-block"></i></h1><p>Restaurants</p></a>
-				<a class="nav-item nav-link px-5" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false"><h1 class="d-none d-sm-block"><i class="fas fa-ticket-alt d-none d-sm-block"></i></h1><p>Events</p></a>
+				<a class="nav-item nav-link active px-5" id="location-tab" data-toggle1="collapse" data-toggle="tab" href="#location" role="tab" aria-controls="location" aria-selected="true"><h1><i class="fas fa-map-marked-alt d-none d-sm-block"></i></h1><p>Locations</p></a>
+				<a class="nav-item nav-link px-5" id="restaurants-tab" data-toggle="tab" href="#restaurants" role="tab" aria-controls="restaurants" aria-selected="false"><h1><i class="fas fa-utensils d-none d-sm-block"></i></h1><p>Restaurants</p></a>
+				<a class="nav-item nav-link px-5" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false"><h1><i class="fas fa-ticket-alt d-none d-sm-block"></i></h1><p>Events</p></a>
 			</div>
 		</nav>
 		<div class="tab-content" id="nav-tabContent">
@@ -41,11 +41,28 @@
 			</div>
 		</div>		
 	</div>
+
+	
+
+	
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Optional JavaScript -->
 	<script src="js/travel.js"></script>
+	<script>
+		var travelLocations = [];
+		for (let i in travel) {
+			if (travel[i].constructor.name == "Locations") {
+			travelLocations.push(travel[i]);
+			}
+		}
+		travelLocations.sort((b,a) => (a.vdate > b.vdate) ? 1 : ((b.vdate > a.vdate) ? -1 : 0));
+		document.getElementById("Locations").innerHTML = "";
+		for (let i in travelLocations) {
+			document.getElementById("Locations").insertAdjacentHTML('beforeend', travelLocations[i].render());
+		}
+	</script>
 </body>
 </html>
