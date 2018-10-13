@@ -70,10 +70,16 @@ class Events extends Locations {
     						<p class="card-text">${this.adress}, <span class="text-nowrap">${this.zip} ${this.city} <a href="https://www.google.com/maps/place/${this.zip} ${this.city}, ${this.adress}" title="show location on google maps"><i class="fas fa-map-marker-alt"></i></a></span></p>
     						<a href="${this.web}"><i class="fas fa-globe"></i> ${this.web.slice(7,)}</a>
     						<p><i class="far fa-calendar-alt"></i> ${days[this.date.getDay()]}, ${String(this.date.getDate()).padStart(2, '0')}.${String(this.date.getMonth()+1).padStart(2, '0')}.${this.date.getFullYear()} - ${this.time.getHours()}:${String(this.time.getMinutes()).padStart(2, '0')}<br>
-							<i class="far fa-money-bill-alt"></i> &euro; ${(this.price).toFixed(2)}</p>
+							<i class="far fa-money-bill-alt"></i> ${this.priceOut()}</p>
     					</div>
 					</div>
 				</div>`
+	}
+	priceOut (){
+		if (this.price == 0) {
+			return `free entry`
+		} 
+		return `&euro; ${(this.price).toFixed(2)}`
 	}
 }
 
