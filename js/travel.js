@@ -77,8 +77,14 @@ travel.push(new Locations("Schneeberg", "Puchberg", "2734", "Bahnhofpl. 1", "sch
 travel.push(new Locations("Aqualandia", "Lido di Jesolo", "30016", "Via Michelangelo Buonarroti 15", "aqualandia.jpg", new Date(2013, 6, 22, 9)));
 travel.push(new Locations("Zoo Vienna", "Vienna", "1130", "Maxingstraße 13b", "zooVienna.jpg", new Date(2013, 3, 6, 10, 45)));
 travel.push(new Locations("Amethyst Welt", "Maissau", "3712", "Horner Straße 36", "amethystwelt.jpg", new Date(2015, 9, 10, 13)));
-travel.push(new Restaurants("Lemon Leaf Thai Restaurant", "Vienna", "1050", "Kettenbrückengasse 19", "LemonLeaf.png", "+43(1)5812308", "thai food", "http://www.lemonleaf.at"));
-travel.push(new Restaurants("SIXTA", "Vienna", "1050", "Schönbrunner Straße 21", "SIXTA.png", "+43 1 58 528 56 l +43 1 58 528 56", "traditional fine food", "http://www.sixta-restaurant.at"));
+travel.push(new Restaurants("Wok & Tea", "Traiskirchen", "2514", "Arkadiaweg 1", "wokntea.jpg", "+43 2252 50 87 77", "asian food", "https://www.firmenabc.at/wok-tea-restaurant_HxGJ"));
+travel.push(new Restaurants("Klostergasthaus Thallern", "Gumpoldskirchen", "2352", "Thallern 1", "thallern.jpg", "+43 2236 53477", "regional spezialities", "https://www.klostergasthaus-thallern.at"));
+travel.push(new Restaurants("Graselwirtin", "Mörtersdorf", "3580", "Mörtersdorf 43", "graselwirtin.jpg", "+43 2982 8235", "regional spezialities", "http://www.graselwirtin.at"));
+travel.push(new Restaurants("Werkstatt Eat & Drink", "Wiener Neustadt", "2700", "Zehnergürtel 12-24", "werkstatt.jpg", "+43 664 / 380 15 75", "exquisite specialities", "https://www.mittag.at/r/werkstatt-fischapark"));
+travel.push(new Restaurants("Camping-Gasthof Maltschacher Seewirt", "Feldkirchen", "9560", "Maltschach 2", "seewirt.jpg", "+43 4277 2637", "regional specialities", "http://www.seewirt-spiess.com"));
+travel.push(new Restaurants("Thermenrestaurant", "Baden", "2500", "Brusattiplatz 4", "thermenrestaurant.jpg", "+43 664 / 56 29 108", "traditional & vegan food", "http://www.thermenrestaurant.at"));
+travel.push(new Restaurants("Bento", "Vösendorf", "2334", "SCS Shopping City Süd", "bento.jpg", "+43 2236 64515", "asian food", "https://www.scs.at/en/restaurant/bento"));
+travel.push(new Restaurants("Tsatsiki", "Sooß", "2500", "Bezirksstrasse 1", "tsatsiki.jpg", "+43 2252 22870", "greek food", "https://www.tsatsiki.at"));
 travel.push(new Events("Kris Kristofferson", "Vienna", "1150", "Wiener Stadthalle, Halle F, Roland Rainer Platz 1", "KrisKristofferson.jpg", "http://kriskristofferson.com", new Date(2018, 10, 15), new Date(0, 0, 0, 20, 0), 58.50));
 travel.push(new Events("Lenny Kravitz", "Vienna", "1150", "Wiener Stadthalle - Halle D, Roland Rainer Platz 1", "LennyKravitz.jpg", "http://www.lennykravitz.com", new Date(2019, 11, 09), new Date(0, 0, 0, 19, 30), 47.80));
 //-----display the objects in the browser-----//
@@ -88,7 +94,7 @@ for (let i in travel) {
 //-----add Eventhandler to hide menu on click-----//
 $(".nav-link").click(function () { $(".collapse").collapse("hide"); });
 function fadeImage() {
-    var x = 10; //number of images
+    var x = 11; //number of images
     for (var i = 1; i <= x; ++i) {
         new Image().src = "img/bg" + i + ".jpg";
     }
