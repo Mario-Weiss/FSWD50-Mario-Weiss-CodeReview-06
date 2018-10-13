@@ -85,8 +85,14 @@ travel.push(new Restaurants("Camping-Gasthof Maltschacher Seewirt", "Feldkirchen
 travel.push(new Restaurants("Thermenrestaurant", "Baden", "2500", "Brusattiplatz 4", "thermenrestaurant.jpg", "+43 664 / 56 29 108", "traditional & vegan food", "http://www.thermenrestaurant.at"));
 travel.push(new Restaurants("Bento", "Vösendorf", "2334", "SCS Shopping City Süd", "bento.jpg", "+43 2236 64515", "asian food", "https://www.scs.at/en/restaurant/bento"));
 travel.push(new Restaurants("Tsatsiki", "Sooß", "2500", "Bezirksstrasse 1", "tsatsiki.jpg", "+43 2252 22870", "greek food", "https://www.tsatsiki.at"));
-travel.push(new Events("Kris Kristofferson", "Vienna", "1150", "Wiener Stadthalle, Halle F, Roland Rainer Platz 1", "KrisKristofferson.jpg", "http://kriskristofferson.com", new Date(2018, 10, 15), new Date(0, 0, 0, 20, 0), 58.50));
-travel.push(new Events("Lenny Kravitz", "Vienna", "1150", "Wiener Stadthalle - Halle D, Roland Rainer Platz 1", "LennyKravitz.jpg", "http://www.lennykravitz.com", new Date(2019, 11, 09), new Date(0, 0, 0, 19, 30), 47.80));
+travel.push(new Events("electric love", "Plainfeld", "5325", "SALZBURGRING - Salzburgring 1", "electriclove.jpg", "https://www.electriclove.at", new Date(2019, 5, 4), new Date(0, 0, 0, 12, 0), 149));
+travel.push(new Events("Donauinselfest", "Vienna", "1210", "Vienna - Donauinsel", "donauinsel.jpg", "https://donauinselfest.at", new Date(2019, 5, 21), new Date(0, 0, 0, 13, 0), 0));
+travel.push(new Events("medieval pageant", "Eggenburg", "3730", "Wienerstraße 13", "eggenburg.jpg", "https://www.mittelalter.co.at", new Date(2019, 8, 7), new Date(0, 0, 0, 10, 0), 7));
+travel.push(new Events("Ritterfest", "Laxenburg", "2361", "Schlossplatz 1", "ritterfest.jpg", "https://www.schloss-laxenburg.at", new Date(2019, 8, 21), new Date(0, 0, 0, 10, 0), 16.6));
+travel.push(new Events("Die Fantastischen Vier", "Vienna", "1150", "Stadthalle Wien, Vogelweidplatz 14", "fanta4.jpg", "http://www.diefantastischenvier.de", new Date(2019, 0, 9), new Date(0, 0, 0, 20, 0), 66.5));
+travel.push(new Events("Glow in the Dark - Circusshow", "Vösendorf", "2331", "Kultursaal Vösendorf, Kindbergstrasse 12", "glow.jpg", "http://www.zirkusstoffl.at", new Date(2018, 9, 27), new Date(0, 0, 0, 17, 0), 13));
+travel.push(new Events("Paul Pizzera & Otto Jaus - Unerhört Solide", "Salzburg", "5020", "Republic - Anton-Neumayr-Platz 2", "paul.jpg", "http://www.paulpizzera.at/pizzera-jaus", new Date(2019, 1, 9), new Date(0, 0, 0, 20, 0), 41));
+travel.push(new Events("Elton John", "Graz", "8010", "Messe Graz - Messeplatz 1", "elton.jpg", "https://www.eltonjohn.com", new Date(2019, 7, 3), new Date(0, 0, 0, 20, 0), 149.9));
 //-----display the objects in the browser-----//
 for (let i in travel) {
     document.getElementById(travel[i].constructor.name).insertAdjacentHTML('beforeend', travel[i].render());
